@@ -1,7 +1,0 @@
--------------------------------------------------------------------------------
-Test set: hello.ContractRestClientApplicationTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.329 s <<< FAILURE! - in hello.ContractRestClientApplicationTest
-initializationError(hello.ContractRestClientApplicationTest)  Time elapsed: 0.005 s  <<< ERROR!
-java.lang.IllegalStateException: Found multiple @SpringBootConfiguration annotated classes [Generic bean: class [hello.ContractRestClientApplication]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in file [/Users/danielocean/Documents/CHANGE_DOM/spring/client/target/classes/hello/ContractRestClientApplication.class], Generic bean: class [hello.ContractRestServiceApplication]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in URL [jar:file:/Users/danielocean/.m2/repository/com/example/contract-rest-service/1.0/contract-rest-service-1.0.jar!/hello/ContractRestServiceApplication.class]]
-
