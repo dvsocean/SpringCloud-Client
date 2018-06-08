@@ -1,7 +1,6 @@
 package jp.fieldnotes.jjug.pact.provider.pact.consumer;
 
 import com.google.gson.Gson;
-import jp.fieldnotes.jjug.pact.provider.pact.consumer.model.Animals;
 import jp.fieldnotes.jjug.pact.provider.pact.consumer.model.Person;
 import org.apache.http.client.fluent.Request;
 

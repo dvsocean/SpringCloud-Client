@@ -33,9 +33,7 @@ public class PersonClientTest {
             .willRespondWith()
             .headers(headers)
             .status(200)
-            .body(
-                    "{\"id\":1,\"name\":\"Jack\",\"surname\":\"Sparrow\"}"
-            )
+            .body("{\"id\":1,\"name\":\"Jack\",\"surname\":\"Sparrow\"}")
             .toFragment();
     }
 
@@ -45,5 +43,7 @@ public class PersonClientTest {
         PersonServiceClient psc = new PersonServiceClient();
         Person response = psc.getPersonInformation("http://localhost:8000", 1);
         assertThat(response.getName(), is("Jack"));
+        assertThat(response.getSurname(), is("Sparrow"));
+        assertThat(response.getId(), is(1L));
     }
 }
