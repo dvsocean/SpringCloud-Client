@@ -1,11 +1,12 @@
-package jp.fieldnotes.jjug.pact.provider.pact.consumer;
+package jp.consumer;
 
 import au.com.dius.pact.consumer.Pact;
 import au.com.dius.pact.consumer.PactProviderRule;
 import au.com.dius.pact.consumer.PactVerification;
 import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
 import au.com.dius.pact.model.PactFragment;
-import jp.fieldnotes.jjug.pact.provider.pact.consumer.model.Person;
+import jp.PersonServiceClient;
+import jp.model.Person;
 import org.junit.Rule;
 import org.junit.Test;
 

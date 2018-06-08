@@ -1,4 +1,4 @@
-package jp.fieldnotes.jjug.pact.provider.pact.consumer.model;
+package jp.model;
 
 public class Person {
 

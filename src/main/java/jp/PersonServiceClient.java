@@ -1,7 +1,7 @@
-package jp.fieldnotes.jjug.pact.provider.pact.consumer;
+package jp;
 
 import com.google.gson.Gson;
-import jp.fieldnotes.jjug.pact.provider.pact.consumer.model.Person;
+import jp.model.Person;
 import org.apache.http.client.fluent.Request;
 
 import java.io.IOException;
