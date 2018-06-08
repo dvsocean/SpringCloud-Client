@@ -11,23 +11,25 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
+//@AutoConfigureStubRunner(ids = {"com.example:contract-rest-service"}, workOffline = true)
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ContractRestClientApplicationTest {
 
-  @Rule
-  public StubRunnerRule stubRunnerRule = new StubRunnerRule()
-      .downloadStub("com.example", "contract-rest-service", "0.0.1-SNAPSHOT", "stubs")
-      .withPort(8100)
-      .stubsMode(StubRunnerProperties.StubsMode.LOCAL);
+//  @Rule
+//  public StubRunnerRule stubRunnerRule = new StubRunnerRule()
+//      .downloadStub("com.example", "contract-rest-service", "1.0", "stubs")
+//      .withPort(8100)
+//      .stubsMode(StubRunnerProperties.StubsMode.LOCAL);
 
   @Test
   public void get_person_from_service_contract() {
+
     // given:
     RestTemplate restTemplate = new RestTemplate();
 
     // when:
-    ResponseEntity<Person> personResponseEntity = restTemplate.getForEntity("http://localhost:8080/person/1", Person.class);
+    ResponseEntity<Person> personResponseEntity = restTemplate.getForEntity("http://localhost:8000/person/1", Person.class);
 
     // then:
     BDDAssertions.then(personResponseEntity.getStatusCodeValue()).isEqualTo(200);

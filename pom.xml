@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>contract-rest-client</groupId>
-  <artifactId>client</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <groupId>com.example</groupId>
+  <artifactId>contract-rest-client</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <parent>
@@ -16,23 +15,12 @@
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
-  <!--TEST BOM-->
-
-  <!--TEST BOM-->
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
-    <spring-cloud.version>Finchley.RC1</spring-cloud.version>
   </properties>
 
   <dependencies>
-
-    <!--<dependency>-->
-      <!--<groupId>org.springframework.boot</groupId>-->
-      <!--<artifactId>spring-boot-starter-thymeleaf</artifactId>-->
-    <!--</dependency>-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
@@ -43,16 +31,35 @@
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
+    <!--<dependency>-->
+      <!--<groupId>org.springframework.cloud</groupId>-->
+      <!--<artifactId>spring-cloud-starter-contract-stub-runner</artifactId>-->
+      <!--<version>1.2.4.RELEASE</version>-->
+      <!--<scope>test</scope>-->
+    <!--</dependency>-->
+
+    <!--FOR STUB RUNNER RULES-->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-contract-stub-runner</artifactId>
+      <artifactId>spring-cloud-contract-stub-runner</artifactId>
+      <version>1.2.5.BUILD-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/io.codearte.accurest/stub-runner -->
     <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-contract-verifier</artifactId>
-      <scope>test</scope>
+      <groupId>io.codearte.accurest</groupId>
+      <artifactId>stub-runner</artifactId>
+      <version>1.1.1</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.example</groupId>
+      <artifactId>contract-rest-service</artifactId>
+      <version>1.0</version>
+      <!--<scope>test</scope>-->
+    </dependency>
+
   </dependencies>
 
   <dependencyManagement>
@@ -60,27 +67,29 @@
       <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-dependencies</artifactId>
-        <version>${spring-cloud.version}</version>
+        <version>Edgware.SR3</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>
 
+  <!--<repositories>-->
+  <!--<repository>-->
+  <!--<name>contract-rest-service</name>-->
+  <!--<id>local-maven-repo</id>-->
+  <!--<url>/Users/danielocean/.m2/repository/com/example/contract-rest-service/1.0/contract-rest-service-1.0.jar</url>-->
+  <!--</repository>-->
+
+  <!--<repository>-->
+  <!--<name>contract-rest-stub</name>-->
+  <!--<id>local-maven-repo</id>-->
+  <!--<url>file:///Users/danielocean/.m2/repository/com/example/contract-rest-service/1.0/contract-rest-service-1.0-stubs.jar</url>-->
+  <!--</repository>-->
+  <!--</repositories>-->
+
   <build>
     <plugins>
-      <!--<plugin>-->
-        <!--<groupId>org.springframework.cloud</groupId>-->
-        <!--<artifactId>spring-cloud-contract-maven-plugin</artifactId>-->
-        <!--<version>1.2.4.RELEASE</version>-->
-        <!--&lt;!&ndash; Don't forget about this value !! &ndash;&gt;-->
-        <!--<extensions>true</extensions>-->
-        <!--<configuration>-->
-          <!--&lt;!&ndash; Provide the base class for your auto-generated tests &ndash;&gt;-->
-          <!--<baseClassForTests>hello.BaseClass</baseClassForTests>-->
-
-        <!--</configuration>-->
-      <!--</plugin>-->
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
@@ -88,14 +97,296 @@
     </plugins>
   </build>
 
-  <repositories>
-    <repository>
-      <id>spring-milestones</id>
-      <name>Spring Milestones</name>
-      <url>https://repo.spring.io/milestone</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
+
 </project>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+  <!--xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">-->
+  <!--<modelVersion>4.0.0</modelVersion>-->
+
+  <!--<groupId>com.example</groupId>-->
+  <!--<artifactId>client</artifactId>-->
+  <!--<version>1.0-SNAPSHOT</version>-->
+  <!--<packaging>jar</packaging>-->
+
+  <!--<parent>-->
+    <!--<groupId>org.springframework.boot</groupId>-->
+    <!--<artifactId>spring-boot-starter-parent</artifactId>-->
+    <!--<version>2.0.2.RELEASE</version>-->
+    <!--<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+  <!--</parent>-->
+
+  <!--<properties>-->
+    <!--<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+    <!--<java.version>1.8</java.version>-->
+  <!--</properties>-->
+
+  <!--<dependencies>-->
+    <!--<dependency>-->
+      <!--<groupId>org.springframework.boot</groupId>-->
+      <!--<artifactId>spring-boot-starter-web</artifactId>-->
+    <!--</dependency>-->
+
+    <!--<dependency>-->
+      <!--<groupId>org.springframework.boot</groupId>-->
+      <!--<artifactId>spring-boot-starter-test</artifactId>-->
+      <!--<scope>test</scope>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+      <!--<groupId>org.springframework.cloud</groupId>-->
+      <!--<artifactId>spring-cloud-starter-contract-stub-runner</artifactId>-->
+      <!--<scope>test</scope>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+      <!--<groupId>org.springframework.cloud</groupId>-->
+      <!--<artifactId>spring-cloud-contract-stub-runner</artifactId>-->
+      <!--<version>1.2.5.BUILD-SNAPSHOT</version>-->
+      <!--<scope>test</scope>-->
+    <!--</dependency>-->
+
+
+
+  <!--</dependencies>-->
+
+
+
+  <!--<dependencyManagement>-->
+    <!--<dependencies>-->
+      <!--<dependency>-->
+        <!--<groupId>org.springframework.cloud</groupId>-->
+        <!--<artifactId>spring-cloud-dependencies</artifactId>-->
+        <!--<version>Finchley.RC1</version>-->
+        <!--<type>pom</type>-->
+        <!--<scope>import</scope>-->
+      <!--</dependency>-->
+    <!--</dependencies>-->
+  <!--</dependencyManagement>-->
+
+  <!--<build>-->
+    <!--<plugins>-->
+      <!--<plugin>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+      <!--</plugin>-->
+
+      <!--&lt;!&ndash;<plugin>&ndash;&gt;-->
+        <!--&lt;!&ndash;<groupId>org.apache.maven.plugins</groupId>&ndash;&gt;-->
+        <!--&lt;!&ndash;<artifactId>maven-install-plugin</artifactId>&ndash;&gt;-->
+        <!--&lt;!&ndash;<version>2.5.2</version>&ndash;&gt;-->
+        <!--&lt;!&ndash;<executions>&ndash;&gt;-->
+          <!--&lt;!&ndash;<execution>&ndash;&gt;-->
+            <!--&lt;!&ndash;<phase>initialize</phase>&ndash;&gt;-->
+            <!--&lt;!&ndash;<goals>&ndash;&gt;-->
+              <!--&lt;!&ndash;<goal>install-file</goal>&ndash;&gt;-->
+            <!--&lt;!&ndash;</goals>&ndash;&gt;-->
+            <!--&lt;!&ndash;<configuration>&ndash;&gt;-->
+              <!--&lt;!&ndash;<file>file:///Users/danielocean/.m2/repository/com/example/contract-rest-service/1.0/contract-rest-service-1.0.jar</file>&ndash;&gt;-->
+              <!--&lt;!&ndash;<groupId>com.example</groupId>&ndash;&gt;-->
+              <!--&lt;!&ndash;<artifactId>contract-rest-service</artifactId>&ndash;&gt;-->
+              <!--&lt;!&ndash;<version>0.0.1-SNAPSHOT</version>&ndash;&gt;-->
+              <!--&lt;!&ndash;<packaging>jar</packaging>&ndash;&gt;-->
+            <!--&lt;!&ndash;</configuration>&ndash;&gt;-->
+          <!--&lt;!&ndash;</execution>&ndash;&gt;-->
+        <!--&lt;!&ndash;</executions>&ndash;&gt;-->
+      <!--&lt;!&ndash;</plugin>&ndash;&gt;-->
+    <!--</plugins>-->
+  <!--</build>-->
+
+
+
+
+<!--</project>-->
+
+
+
+
+
+
+
+
+
+
+
+<!--&lt;!&ndash;<?xml version="1.0" encoding="UTF-8"?>&ndash;&gt;-->
+<!--&lt;!&ndash;<project xmlns="http://maven.apache.org/POM/4.0.0"&ndash;&gt;-->
+  <!--&lt;!&ndash;xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&ndash;&gt;-->
+  <!--&lt;!&ndash;xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">&ndash;&gt;-->
+  <!--&lt;!&ndash;<modelVersion>4.0.0</modelVersion>&ndash;&gt;-->
+
+  <!--&lt;!&ndash;<groupId>com.example</groupId>&ndash;&gt;-->
+  <!--&lt;!&ndash;<artifactId>client</artifactId>&ndash;&gt;-->
+  <!--&lt;!&ndash;<version>1.0-SNAPSHOT</version>&ndash;&gt;-->
+  <!--&lt;!&ndash;<packaging>jar</packaging>&ndash;&gt;-->
+
+  <!--&lt;!&ndash;<parent>&ndash;&gt;-->
+    <!--&lt;!&ndash;<groupId>org.springframework.boot</groupId>&ndash;&gt;-->
+    <!--&lt;!&ndash;<artifactId>spring-boot-starter-parent</artifactId>&ndash;&gt;-->
+    <!--&lt;!&ndash;<version>2.0.2.RELEASE</version>&ndash;&gt;-->
+    <!--&lt;!&ndash;<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;&ndash;&gt;-->
+  <!--&lt;!&ndash;</parent>&ndash;&gt;-->
+
+  <!--&lt;!&ndash;&lt;!&ndash;TEST BOM&ndash;&gt;&ndash;&gt;-->
+
+  <!--&lt;!&ndash;&lt;!&ndash;TEST BOM&ndash;&gt;&ndash;&gt;-->
+
+  <!--&lt;!&ndash;<properties>&ndash;&gt;-->
+    <!--&lt;!&ndash;<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>&ndash;&gt;-->
+    <!--&lt;!&ndash;<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>&ndash;&gt;-->
+    <!--&lt;!&ndash;<java.version>1.8</java.version>&ndash;&gt;-->
+    <!--&lt;!&ndash;<spring-cloud.version>Finchley.RC1</spring-cloud.version>&ndash;&gt;-->
+  <!--&lt;!&ndash;</properties>&ndash;&gt;-->
+
+  <!--&lt;!&ndash;<dependencies>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;&lt;!&ndash;<dependency>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<groupId>org.springframework.boot</groupId>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<artifactId>spring-boot-starter-thymeleaf</artifactId>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;</dependency>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;<dependency>&ndash;&gt;-->
+      <!--&lt;!&ndash;<groupId>org.springframework.boot</groupId>&ndash;&gt;-->
+      <!--&lt;!&ndash;<artifactId>spring-boot-starter-web</artifactId>&ndash;&gt;-->
+    <!--&lt;!&ndash;</dependency>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<dependency>&ndash;&gt;-->
+      <!--&lt;!&ndash;<groupId>org.springframework.boot</groupId>&ndash;&gt;-->
+      <!--&lt;!&ndash;<artifactId>spring-boot-starter-test</artifactId>&ndash;&gt;-->
+      <!--&lt;!&ndash;<scope>test</scope>&ndash;&gt;-->
+    <!--&lt;!&ndash;</dependency>&ndash;&gt;-->
+    <!--&lt;!&ndash;<dependency>&ndash;&gt;-->
+      <!--&lt;!&ndash;<groupId>org.springframework.cloud</groupId>&ndash;&gt;-->
+      <!--&lt;!&ndash;<artifactId>spring-cloud-starter-contract-stub-runner</artifactId>&ndash;&gt;-->
+      <!--&lt;!&ndash;<scope>test</scope>&ndash;&gt;-->
+    <!--&lt;!&ndash;</dependency>&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<dependency>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<groupId>org.springframework.cloud</groupId>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<artifactId>spring-cloud-starter-contract-verifier</artifactId>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<scope>test</scope>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;</dependency>&ndash;&gt;&ndash;&gt;-->
+
+    <!--&lt;!&ndash;&lt;!&ndash;COMING FROM SERVICE&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<dependency>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<groupId>com.example</groupId>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<artifactId>contract-rest-service</artifactId>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<version>0.0.1-SNAPSHOT</version>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<scope>test</scope>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;</dependency>&ndash;&gt;&ndash;&gt;-->
+  <!--&lt;!&ndash;</dependencies>&ndash;&gt;-->
+
+  <!--&lt;!&ndash;<dependencyManagement>&ndash;&gt;-->
+    <!--&lt;!&ndash;<dependencies>&ndash;&gt;-->
+      <!--&lt;!&ndash;<dependency>&ndash;&gt;-->
+        <!--&lt;!&ndash;<groupId>org.springframework.cloud</groupId>&ndash;&gt;-->
+        <!--&lt;!&ndash;<artifactId>spring-cloud-dependencies</artifactId>&ndash;&gt;-->
+        <!--&lt;!&ndash;<version>${spring-cloud.version}</version>&ndash;&gt;-->
+        <!--&lt;!&ndash;<type>pom</type>&ndash;&gt;-->
+        <!--&lt;!&ndash;<scope>import</scope>&ndash;&gt;-->
+      <!--&lt;!&ndash;</dependency>&ndash;&gt;-->
+    <!--&lt;!&ndash;</dependencies>&ndash;&gt;-->
+  <!--&lt;!&ndash;</dependencyManagement>&ndash;&gt;-->
+
+  <!--&lt;!&ndash;<build>&ndash;&gt;-->
+    <!--&lt;!&ndash;<plugins>&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<plugin>&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;<groupId>org.springframework.cloud</groupId>&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;<artifactId>spring-cloud-contract-maven-plugin</artifactId>&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;<version>1.2.4.RELEASE</version>&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash; Don't forget about this value !! &ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;<extensions>true</extensions>&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;<configuration>&ndash;&gt;&ndash;&gt;-->
+          <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash; Provide the base class for your auto-generated tests &ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+          <!--&lt;!&ndash;&lt;!&ndash;<baseClassForTests>hello.BaseClass</baseClassForTests>&ndash;&gt;&ndash;&gt;-->
+
+        <!--&lt;!&ndash;&lt;!&ndash;</configuration>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;</plugin>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;<plugin>&ndash;&gt;-->
+        <!--&lt;!&ndash;<groupId>org.springframework.boot</groupId>&ndash;&gt;-->
+        <!--&lt;!&ndash;<artifactId>spring-boot-maven-plugin</artifactId>&ndash;&gt;-->
+      <!--&lt;!&ndash;</plugin>&ndash;&gt;-->
+    <!--&lt;!&ndash;</plugins>&ndash;&gt;-->
+  <!--&lt;!&ndash;</build>&ndash;&gt;-->
+
+  <!--&lt;!&ndash;<repositories>&ndash;&gt;-->
+    <!--&lt;!&ndash;<repository>&ndash;&gt;-->
+      <!--&lt;!&ndash;<id>spring-milestones</id>&ndash;&gt;-->
+      <!--&lt;!&ndash;<name>Spring Milestones</name>&ndash;&gt;-->
+      <!--&lt;!&ndash;<url>https://repo.spring.io/snapshot</url>&ndash;&gt;-->
+      <!--&lt;!&ndash;<snapshots>&ndash;&gt;-->
+        <!--&lt;!&ndash;<enabled>true</enabled>&ndash;&gt;-->
+      <!--&lt;!&ndash;</snapshots>&ndash;&gt;-->
+    <!--&lt;!&ndash;</repository>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<repository>&ndash;&gt;-->
+      <!--&lt;!&ndash;<id>spring-milestones</id>&ndash;&gt;-->
+      <!--&lt;!&ndash;<name>Spring Milestones</name>&ndash;&gt;-->
+      <!--&lt;!&ndash;<url>https://repo.spring.io/milestone</url>&ndash;&gt;-->
+      <!--&lt;!&ndash;<snapshots>&ndash;&gt;-->
+        <!--&lt;!&ndash;<enabled>true</enabled>&ndash;&gt;-->
+      <!--&lt;!&ndash;</snapshots>&ndash;&gt;-->
+    <!--&lt;!&ndash;</repository>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<repository>&ndash;&gt;-->
+      <!--&lt;!&ndash;<id>spring-releases</id>&ndash;&gt;-->
+      <!--&lt;!&ndash;<name>Spring Releases</name>&ndash;&gt;-->
+      <!--&lt;!&ndash;<url>https://repo.spring.io/release</url>&ndash;&gt;-->
+      <!--&lt;!&ndash;<snapshots>&ndash;&gt;-->
+        <!--&lt;!&ndash;<enabled>false</enabled>&ndash;&gt;-->
+      <!--&lt;!&ndash;</snapshots>&ndash;&gt;-->
+    <!--&lt;!&ndash;</repository>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<repository>&ndash;&gt;-->
+      <!--&lt;!&ndash;<id>spring-snapshot</id>&ndash;&gt;-->
+      <!--&lt;!&ndash;<name>Spring Snapshot Repository</name>&ndash;&gt;-->
+      <!--&lt;!&ndash;<url>https://repo.spring.io/snapshot</url>&ndash;&gt;-->
+      <!--&lt;!&ndash;<snapshots>&ndash;&gt;-->
+        <!--&lt;!&ndash;<enabled>true</enabled>&ndash;&gt;-->
+      <!--&lt;!&ndash;</snapshots>&ndash;&gt;-->
+    <!--&lt;!&ndash;</repository>&ndash;&gt;-->
+  <!--&lt;!&ndash;</repositories>&ndash;&gt;-->
+
+  <!--&lt;!&ndash;&lt;!&ndash;<pluginRepositories>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<pluginRepository>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<id>spring-snapshots</id>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<name>Spring Snapshots</name>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<url>https://repo.spring.io/snapshot</url>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<snapshots>&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;<enabled>true</enabled>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;</snapshots>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;</pluginRepository>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<pluginRepository>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<id>spring-milestones</id>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<name>Spring Milestones</name>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<url>https://repo.spring.io/milestone</url>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<snapshots>&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;<enabled>false</enabled>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;</snapshots>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;</pluginRepository>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<pluginRepository>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<id>spring-releases</id>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<name>Spring Releases</name>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<url>https://repo.spring.io/release</url>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<snapshots>&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;<enabled>false</enabled>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;</snapshots>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;</pluginRepository>&ndash;&gt;&ndash;&gt;-->
+  <!--&lt;!&ndash;&lt;!&ndash;</pluginRepositories>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;</project>&ndash;&gt;-->
