@@ -1,9 +1,9 @@
 {
     "provider": {
-        "name": "test_provider"
+        "name": "person"
     },
     "consumer": {
-        "name": "test_consumer"
+        "name": "person_consumer"
     },
     "interactions": [
         {

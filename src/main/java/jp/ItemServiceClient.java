@@ -9,10 +9,10 @@ import java.nio.charset.Charset;
 
 public class ItemServiceClient {
 
-    public Item getPersonInformation(String baseUrl)
+    public Item getPersonInformation(String baseUrl, int id)
             throws IOException {
 
-        String response =  Request.Get(baseUrl).execute().returnContent().asString(Charset.forName("UTF-8"));
+        String response =  Request.Get(baseUrl + "/item/" + id).execute().returnContent().asString(Charset.forName("UTF-8"));
         Gson gson = new Gson();
         return gson.fromJson(response, Item.class);
     }

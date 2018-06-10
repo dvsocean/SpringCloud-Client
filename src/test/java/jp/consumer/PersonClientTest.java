@@ -22,9 +22,9 @@ public class PersonClientTest {
     Map<String, String> headers = Collections.singletonMap("Content-Type", "application/json");
 
     @Rule
-    public PactProviderRule provider = new PactProviderRule("test_provider", "localhost", 8000, this);
+    public PactProviderRule provider = new PactProviderRule("person", "localhost", 8000, this);
 
-    @Pact(provider="test_provider", consumer="test_consumer")
+    @Pact(provider="person", consumer="person_consumer")
     public PactFragment configurationFragment(PactDslWithProvider builder) {
         return builder
             .given("a person exists")
@@ -38,7 +38,7 @@ public class PersonClientTest {
             .toFragment();
     }
 
-    @PactVerification("test_provider")
+    @PactVerification("person")
     @Test
     public void get_person() throws IOException {
         PersonServiceClient psc = new PersonServiceClient();
