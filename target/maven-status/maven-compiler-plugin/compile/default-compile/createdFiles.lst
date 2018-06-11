@@ -1,0 +1,6 @@
+jp/model/Person.class
+jp/model/Item.class
+jp/PersonServiceClient.class
+jp/MilitaryServiceClient.class
+jp/ItemServiceClient.class
+jp/model/Burner.class

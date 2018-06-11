@@ -1,0 +1,32 @@
+{
+    "provider": {
+        "name": "military"
+    },
+    "consumer": {
+        "name": "military_consumer"
+    },
+    "interactions": [
+        {
+            "description": "request for a specific hardware",
+            "request": {
+                "method": "GET",
+                "path": "/hardware/1"
+            },
+            "response": {
+                "status": 200,
+                "body": {
+                    "model": "1911 45. ACP"
+                }
+            },
+            "providerState": "hardware exists"
+        }
+    ],
+    "metadata": {
+        "pact-specification": {
+            "version": "2.0.0"
+        },
+        "pact-jvm": {
+            "version": "3.3.8"
+        }
+    }
+}

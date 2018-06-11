@@ -21,26 +21,26 @@ public class PersonClientTest {
 
     //Map<String, String> headers = Collections.singletonMap("Content-Type", "application/json");
 
-//    @Rule
-//    public PactProviderRule provider = new PactProviderRule("person", "localhost", 8000, this);
-//
-//    @Pact(provider="person", consumer="person_consumer")
-//    public PactFragment configurationFragment(PactDslWithProvider builder) {
-//        return builder
-//            .given("a person exists")
-//            .uponReceiving("a request for a specific")
-//            .path("/person/1")
-//            .method("GET")
-//            .willRespondWith()
-//            .headers(headers)
-//            .status(200)
-//            .body("{\"id\":1,\"name\":\"Jack\",\"surname\":\"Sparrow\"}")
-//            .toFragment();
-//    }
+    @Rule
+    public PactProviderRule provider = new PactProviderRule("person", "localhost", 8000, this);
 
-    //@PactVerification("person")
+    @Pact(provider="person", consumer="person_consumer")
+    public PactFragment configurationFragment(PactDslWithProvider builder) {
+        return builder
+            .given("a person exists")
+            .uponReceiving("a request for a specific")
+            .path("/person/1")
+            .method("GET")
+            .willRespondWith()
+            //.headers(headers)
+            .status(200)
+            .body("{\"id\":1,\"name\":\"Jack\",\"surname\":\"Sparrow\"}")
+            .toFragment();
+    }
+
+    @PactVerification("person")
     @Test
-    public void get_person() throws IOException {
+    public void get_mil() throws IOException {
         PersonServiceClient psc = new PersonServiceClient();
         Person response = psc.getPersonInformation("http://localhost:8000", 1);
         assertThat(response.getName(), is("Jack"));
