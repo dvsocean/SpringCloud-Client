@@ -28,7 +28,6 @@ public class MilitaryClientTest {
             .path("/hardware/1")
             .method("GET")
             .willRespondWith()
-            //.headers(headers)
             .status(200)
             .body("{\"model\": \"1911 45. ACP\"}")
             .toFragment();

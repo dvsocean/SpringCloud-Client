@@ -30,7 +30,6 @@ public class PersonClientTest {
             .path("/person/1")
             .method("GET")
             .willRespondWith()
-            //.headers(headers)
             .status(200)
             .body("{\"id\":1,\"name\":\"Jack\",\"surname\":\"Sparrow\"}")
             .toFragment();
