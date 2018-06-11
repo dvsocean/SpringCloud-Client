@@ -17,8 +17,6 @@ import static org.junit.Assert.assertThat;
 
 public class ItemClientTest {
 
-    //Map<String, String> headers = Collections.singletonMap("Content-Type", "application/json");
-
     @Rule
     public PactProviderRule provider = new PactProviderRule("item_prov", "localhost", 8000, this);
 
@@ -30,7 +28,6 @@ public class ItemClientTest {
                 .path("/item/3")
                 .method("GET")
                 .willRespondWith()
-                //.headers(headers)
                 .status(200)
                 .body("{\"description\":\"Cars\",\"completed\":false,\"belongsTo\":\"Evan\"}")
                 .toFragment();
@@ -45,12 +42,6 @@ public class ItemClientTest {
         assertThat(response.isCompleted(), is(false));
         System.out.println("The owner of this item is --> " + response.getBelongsTo());
         System.out.println("The completed status is --> " + response.isCompleted());
-    }
-
-    @Test
-    public void simpleReq() throws IOException {
-        ItemServiceClient isc = new ItemServiceClient();
-        isc.getResponseFromHeroku("https://ocean-rest-test.herokuapp.com/itemsObject");
     }
 
 }

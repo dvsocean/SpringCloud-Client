@@ -15,9 +15,4 @@ public class ItemServiceClient {
         Gson gson = new Gson();
         return gson.fromJson(response, Item.class);
     }
-
-    public void getResponseFromHeroku(String url) throws IOException {
-        String response =  Request.Get(url).execute().returnContent().asString();
-        System.out.println("Output from herokuApp --> " + response);
-    }
 }
