@@ -19,26 +19,26 @@ import static org.junit.Assert.assertThat;
 
 public class PersonClientTest {
 
-    Map<String, String> headers = Collections.singletonMap("Content-Type", "application/json");
+    //Map<String, String> headers = Collections.singletonMap("Content-Type", "application/json");
 
-    @Rule
-    public PactProviderRule provider = new PactProviderRule("person", "localhost", 8000, this);
+//    @Rule
+//    public PactProviderRule provider = new PactProviderRule("person", "localhost", 8000, this);
+//
+//    @Pact(provider="person", consumer="person_consumer")
+//    public PactFragment configurationFragment(PactDslWithProvider builder) {
+//        return builder
+//            .given("a person exists")
+//            .uponReceiving("a request for a specific")
+//            .path("/person/1")
+//            .method("GET")
+//            .willRespondWith()
+//            .headers(headers)
+//            .status(200)
+//            .body("{\"id\":1,\"name\":\"Jack\",\"surname\":\"Sparrow\"}")
+//            .toFragment();
+//    }
 
-    @Pact(provider="person", consumer="person_consumer")
-    public PactFragment configurationFragment(PactDslWithProvider builder) {
-        return builder
-            .given("a person exists")
-            .uponReceiving("a request for a specific")
-            .path("/person/1")
-            .method("GET")
-            .willRespondWith()
-            .headers(headers)
-            .status(200)
-            .body("{\"id\":1,\"name\":\"Jack\",\"surname\":\"Sparrow\"}")
-            .toFragment();
-    }
-
-    @PactVerification("person")
+    //@PactVerification("person")
     @Test
     public void get_person() throws IOException {
         PersonServiceClient psc = new PersonServiceClient();
@@ -46,5 +46,6 @@ public class PersonClientTest {
         assertThat(response.getName(), is("Jack"));
         assertThat(response.getSurname(), is("Sparrow"));
         assertThat(response.getId(), is(1L));
+        System.out.println("Tested for return name--> " + response.getName() + ", " + response.getSurname());
     }
 }
