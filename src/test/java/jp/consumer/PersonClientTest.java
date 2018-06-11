@@ -11,8 +11,6 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
